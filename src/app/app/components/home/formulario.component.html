@@ -1,0 +1,46 @@
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <label>Nome Completo:</label>
+  <input formControlName="nomeCompleto" type="text" />
+  <br />
+
+  <label>Email:</label>
+  <input formControlName="email" type="email" />
+  <br />
+
+  <label>Idade:</label>
+  <input formControlName="idade" type="number" />
+  <br />
+
+  <label>Endereço:</label>
+  <input formControlName="endereco" type="text" />
+  <br />
+
+  <label>Telefone:</label>
+  <input formControlName="telefone" type="text" />
+  <span *ngIf="formulario.get('telefone')?.hasError('pattern')">
+    Telefone inválido! Use apenas números (10 ou 11 dígitos).
+  </span>
+  <br />
+
+  <label>Senha:</label>
+  <input formControlName="senha" type="password" />
+  <span *ngIf="formulario.get('senha')?.hasError('pattern')">
+    A senha deve ter pelo menos 6 caracteres, 1 número e 1 maiúscula.
+  </span>
+  <br />
+
+  <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+  <!-- Foto de Perfil -->
+<div>
+  <label for="fotoPerfil">Foto de Perfil</label>
+  <input id="fotoPerfil" formControlName="fotoPerfil" type="file" accept="image/*" />
+  
+  <div *ngIf="formulario.get('fotoPerfil')?.touched && formulario.get('fotoPerfil')?.invalid">
+    <small *ngIf="formulario.get('fotoPerfil')?.hasError('required')">Foto de perfil é obrigatória.</small>
+    <small *ngIf="formulario.get('fotoPerfil')?.hasError('tipoInvalido')">O arquivo deve ser uma imagem (JPG, PNG, GIF).</small>
+    <small *ngIf="formulario.get('fotoPerfil')?.hasError('tamanhoExcedido')">A imagem não pode exceder 2MB.</small>
+  </div>
+</div>
+
+</form>
