@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ FormularioComponent], // Adicione FormularioComponent aqui
+  declarations: [ FormularioComponent], 
   imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
   bootstrap: []
